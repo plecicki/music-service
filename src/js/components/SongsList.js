@@ -1,9 +1,7 @@
-import APIClient from './APIClient.js';
-
 class SongsList {
-  constructor(APIClient) {
+  constructor(apiClient) {
     const thisSongsList = this;
-    APIClient.getSongsFromAPI(thisSongsList);
+    apiClient.getSongsFromAPI(thisSongsList);
     console.log('thisSongsList.songs', thisSongsList.songs);
   }
 }

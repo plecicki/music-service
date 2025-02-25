@@ -3,9 +3,10 @@ import { appAdvice } from './appAdvice.js';
 import SongsList from './components/SongsList.js';
 import APIClient from './components/APIClient.js';
 
+const apiClient = new APIClient();
 const app = {
   initSongsListAndAPIClient: function () {
-    new SongsList(new APIClient);
+    new SongsList(apiClient);
   },
   initPages: function () {
     const thisApp = this;
