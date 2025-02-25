@@ -61,3 +61,17 @@ body {
   height: 100%;
   background-image: linear-gradient(180deg, transparent 0 50%, $color-dark 100%);
 }
+
+.main-nav {
+  max-width: 300px;
+  margin: 0 auto;
+  a {
+    color: $color-gray;
+    font-weight: $font-bold;
+    text-decoration: none;
+    font-size: 15px;
+  }
+  a:hover {
+    color: $color-white;
+  }
+}
