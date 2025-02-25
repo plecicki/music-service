@@ -1,7 +1,12 @@
 import { select, classNames } from './settings.js';
 import { appAdvice } from './appAdvice.js';
+import SongsList from './components/SongsList.js';
+import APIClient from './components/APIClient.js';
 
 const app = {
+  initSongsListAndAPIClient: function () {
+    new SongsList(new APIClient);
+  },
   initPages: function () {
     const thisApp = this;
 
@@ -42,6 +47,7 @@ const app = {
     const thisApp = this;
     console.log('*** App starting ***');
     thisApp.initPages();
+    thisApp.initSongsListAndAPIClient();
   },
 };
 
