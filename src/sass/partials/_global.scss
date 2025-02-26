@@ -19,10 +19,11 @@ body {
   font-size: 14px;
   line-height: 1.7;
   font-weight: $font-normal;
+  color: $color-white;
 }
 
 .container {
-  max-width: 700px;
+  max-width: 400px;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -31,10 +32,12 @@ body {
   img {
     width: 100%;
   }
+
   .title-text {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
     .main-title {
       font-size: 10vw;
       font-weight: $font-black;
@@ -42,6 +45,7 @@ body {
       letter-spacing: 5vw;
       text-align: center;
     }
+
     .subtitle {
       font-size: 2vw;
       font-weight: $font-black;
@@ -63,14 +67,15 @@ body {
 }
 
 .main-nav {
-  max-width: 300px;
   margin: 0 auto;
+
   a {
     color: $color-gray;
     font-weight: $font-bold;
     text-decoration: none;
     font-size: 15px;
   }
+
   a:hover {
     color: $color-white;
   }

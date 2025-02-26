@@ -44,9 +44,17 @@ const app = {
       );
     }
   },
+  initSongsPlayer: function() {
+    // eslint-disable-next-line no-undef
+    GreenAudioPlayer.init({
+      selector: '.player', // inits Green Audio Player on each audio container that has class "player"
+      stopOthersOnPlay: true
+    });
+  },
   init: function () {
     const thisApp = this;
     console.log('*** App starting ***');
+    thisApp.initSongsPlayer();
     thisApp.initPages();
     thisApp.initSongsListAndAPIClient();
   },
