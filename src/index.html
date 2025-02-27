@@ -35,55 +35,8 @@
     </header>
     <div id="pages">
         <section id="home" class="pt-1">
-            <div class="home container pt-4">
-                <div class="song pb-4">
-                    <div class="song-title px-3 pb-4">JOHN DOE - Where did my love go?</div>
-                    <div class="player mb-3">
-                        <audio>
-                            <source src="songs/At_The_Top_David_Renda.mp3" type="audio/mpeg">
-                        </audio>
-                    </div>
-                    <div class="row song-description px-2">
-                        <div class="col-md-8">
-                            Categories: slow, melancholy
-                        </div>
-                        <div class="col-md-4">
-                            4 in the ranking
-                        </div>
-                    </div>
-                </div>
-                <div class="song pb-4">
-                    <div class="song-title px-3 pb-4">JOHN DOE - Where did my love go?</div>
-                    <div class="player mb-3">
-                        <audio>
-                            <source src="songs/At_The_Top_David_Renda.mp3" type="audio/mpeg">
-                        </audio>
-                    </div>
-                    <div class="row song-description px-2">
-                        <div class="col-md-8">
-                            Categories: slow, melancholy
-                        </div>
-                        <div class="col-md-4">
-                            4 in the ranking
-                        </div>
-                    </div>
-                </div>
-                <div class="song pb-4">
-                    <div class="song-title px-3 pb-4">JOHN DOE - Where did my love go?</div>
-                    <div class="player mb-3">
-                        <audio>
-                            <source src="songs/At_The_Top_David_Renda.mp3" type="audio/mpeg">
-                        </audio>
-                    </div>
-                    <div class="row song-description px-2">
-                        <div class="col-md-8">
-                            Categories: slow, melancholy
-                        </div>
-                        <div class="col-md-4">
-                            4 in the ranking
-                        </div>
-                    </div>
-                </div>
+            <div class="home container songs-list pt-4">
+
             </div>
             <div class="footer-title position-relative">
                 <img src="images/subscribe.jpg" alt="Subscribe Image" class="subscribe-img position-absolute">
@@ -95,7 +48,7 @@
                     NOW
                 </span>
                 </div>
-                <button class="position-absolute">JOIN NOW</button>
+                <button class="position-absolute" type="button">JOIN NOW</button>
                 <img src="images/artist.jpg" alt="Artist Image" class="artist-img position-absolute">
                 <div class="artist-name position-absolute">
                     <div class="name">
@@ -124,11 +77,34 @@
         </section>
     </div>
     <footer>
-
+        All rights reserved
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script id="template-songs-list" type="text/x-handlebars-template">
+        {{#each songs}}
+        <div class="song pb-4">
+            <div class="song-title px-3 pb-4">JOHN DOE - Where did my love go?</div>
+            <div class="player mb-3">
+                <audio>
+                    <!-- [html-validate-disable-next element-permitted-content] -->
+                    <source src="songs/At_The_Top_David_Renda.mp3" type="audio/mpeg">
+                </audio>
+            </div>
+            <div class="row song-description px-2">
+                <div class="col-md-8">
+                    Categories: slow, melancholy
+                </div>
+                <div class="col-md-4">
+                    4 in the ranking
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </script>
+
     <script src="https://cdn.jsdelivr.net/gh/greghub/green-audio-player/dist/js/green-audio-player.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="js/app.js" type="module"></script>
 </body>
 </html>

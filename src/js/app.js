@@ -1,12 +1,14 @@
 import { select, classNames } from './settings.js';
 import { appAdvice } from './appAdvice.js';
 import SongsList from './components/SongsList.js';
-import APIClient from './components/APIClient.js';
 
-const apiClient = new APIClient();
 const app = {
   initSongsListAndAPIClient: function () {
-    new SongsList(apiClient);
+    const thisApp = this;
+
+    thisApp.songsListContainer = document.querySelector((select.containerOf.songsList));
+
+    new SongsList(thisApp.songsListContainer);
   },
   initPages: function () {
     const thisApp = this;
@@ -47,16 +49,17 @@ const app = {
   initSongsPlayer: function() {
     // eslint-disable-next-line no-undef
     GreenAudioPlayer.init({
-      selector: '.player', // inits Green Audio Player on each audio container that has class "player"
+      selector: '.player',
       stopOthersOnPlay: true
     });
   },
   init: function () {
     const thisApp = this;
     console.log('*** App starting ***');
-    thisApp.initSongsPlayer();
-    thisApp.initPages();
     thisApp.initSongsListAndAPIClient();
+
+    thisApp.initPages();
+    thisApp.initSongsPlayer();
   },
 };
 

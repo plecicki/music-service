@@ -11,6 +11,7 @@
     left: 0;
     right: 0;
     text-align: center;
+
     .part-2 {
       font-weight: $font-bold;
     }
@@ -42,9 +43,11 @@
     font-size: 5vw;
     font-weight: $font-bold;
     letter-spacing: 1vw;
+
     .lastname {
       margin-top: -3.5vw;
       padding-left: 4vw;
+
       .part-2 {
         margin-left: -2vw;
         color: $color-main;
@@ -58,10 +61,12 @@
     text-align: end;
     font-size: 2vw;
     letter-spacing: 0.3vw;
+
     .part-1 {
       font-weight: $font-semibold;
       color: $color-gray;
     }
+
     .part-2 {
       margin-top: -1vw;
     }
