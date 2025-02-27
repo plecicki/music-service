@@ -65,14 +65,22 @@
                 </div>
             </div>
         </section>
-        <section id="search">
+        <section id="search" class="pt-1">
             <div class="search container">
                 B
             </div>
         </section>
-        <section id="discover">
+        <section id="discover" class="pt-1">
             <div class="discover container">
-                C
+                <div class="title pt-4">
+                    DISCOVER
+                </div>
+                <div class="subtitle pt-4 pb-2">
+                    Give it a try!
+                </div>
+                <div class="random-song pt-4">
+
+                </div>
             </div>
         </section>
     </div>
@@ -100,6 +108,26 @@
             </div>
         </div>
         {{/each}}
+    </script>
+
+    <script id="template-song" type="text/x-handlebars-template">
+        <div class="song pb-4">
+            <div class="song-title px-3 pb-4">{{ author }} - {{ title }}</div>
+            <div class="player mb-3">
+                <audio>
+                    <!-- [html-validate-disable-next element-permitted-content] -->
+                    <source src="songs/{{filename}}" type="audio/mpeg">
+                </audio>
+            </div>
+            <div class="row song-description px-2">
+                <div class="col-md-8">
+                    Categories: {{ categories.[0] }}, {{ categories.[1] }}
+                </div>
+                <div class="col-md-4">
+                    #{{ ranking }} in the ranking
+                </div>
+            </div>
+        </div>
     </script>
 
     <script src="https://cdn.jsdelivr.net/gh/greghub/green-audio-player/dist/js/green-audio-player.min.js"></script>

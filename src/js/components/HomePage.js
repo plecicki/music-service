@@ -1,4 +1,4 @@
-import {templates} from "../settings.js";
+import {templates} from '../settings.js';
 
 class HomePage {
 
@@ -8,7 +8,7 @@ class HomePage {
         songs: allPagesObject.songs,
       }
     );
-    allPagesObject.dom.wrapper.innerHTML = songsListGenHTML;
+    allPagesObject.dom.songsList.innerHTML = songsListGenHTML;
   }
 }
 

@@ -1,10 +1,12 @@
 export const select = {
   templateOf: {
-    songsList: '#template-songs-list'
+    songsList: '#template-songs-list',
+    song: '#template-song',
   },
   containerOf: {
     pages: '#pages',
     songsList: '.songs-list',
+    randomSong: '.random-song',
   },
   nav: {
     links: '.main-nav a',
@@ -30,4 +32,5 @@ export const settings = {
 
 export const templates = {
   songsList: Handlebars.compile(document.querySelector(select.templateOf.songsList).innerHTML),
+  song: Handlebars.compile(document.querySelector(select.templateOf.song).innerHTML),
 };

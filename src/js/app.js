@@ -3,12 +3,13 @@ import { appAdvice } from './appAdvice.js';
 import AllPages from './components/AllPages.js';
 
 const app = {
-  initSongsListAndAPIClient: function () {
+  initAllPages: function () {
     const thisApp = this;
 
-    thisApp.songsListContainer = document.querySelector((select.containerOf.songsList));
+    thisApp.songsListContainer = document.querySelector(select.containerOf.songsList);
+    thisApp.randomSongContainer = document.querySelector(select.containerOf.randomSong);
 
-    new AllPages(thisApp.songsListContainer);
+    new AllPages(thisApp.songsListContainer, thisApp.randomSongContainer);
   },
   initPages: function () {
     const thisApp = this;
@@ -46,20 +47,12 @@ const app = {
       );
     }
   },
-  initSongsPlayer: function() {
-    // eslint-disable-next-line no-undef
-    GreenAudioPlayer.init({
-      selector: '.player',
-      stopOthersOnPlay: true
-    });
-  },
   init: function () {
     const thisApp = this;
     console.log('*** App starting ***');
-    thisApp.initSongsListAndAPIClient();
+    thisApp.initAllPages();
 
     thisApp.initPages();
-    thisApp.initSongsPlayer();
   },
 };
 
