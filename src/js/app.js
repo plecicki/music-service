@@ -1,6 +1,6 @@
 import { select, classNames } from './settings.js';
 import { appAdvice } from './appAdvice.js';
-import SongsList from './components/SongsList.js';
+import AllPages from './components/AllPages.js';
 
 const app = {
   initSongsListAndAPIClient: function () {
@@ -8,7 +8,7 @@ const app = {
 
     thisApp.songsListContainer = document.querySelector((select.containerOf.songsList));
 
-    new SongsList(thisApp.songsListContainer);
+    new AllPages(thisApp.songsListContainer);
   },
   initPages: function () {
     const thisApp = this;

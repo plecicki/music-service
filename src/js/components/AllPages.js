@@ -1,20 +1,26 @@
-import {settings, templates} from '../settings.js';
+import {settings} from '../settings.js';
 import SongsPlayer from '../config/SongsPlayer.js';
+import SongAdvice from './SongAdvice.js';
+import HomePage from './HomePage.js';
 
-class SongsList {
+class AllPages {
 
   constructor(element) {
-    const thisSongsList = this;
-    thisSongsList.dom = [];
-    thisSongsList.dom.wrapper = element;
-    thisSongsList.render();
+    const thisAllPages = this;
+    thisAllPages.dom = [];
+    thisAllPages.dom.wrapper = element;
+    thisAllPages.renderPages();
   }
 
-  render() {
-    const thisSongsList = this;
+  renderPages() {
+    const thisAllPages = this;
 
     const urlSongs = settings.db.url + '/' + settings.db.songs;
     const urlAuthors = settings.db.url + '/' + settings.db.authors;
+
+    const songAdvice = new SongAdvice();
+
+    const homePage = new HomePage();
 
     fetch(urlSongs)
       .then(function (rawResponse) {
@@ -32,20 +38,13 @@ class SongsList {
             throw new Error('API with authors didnt respond');
           })
           .then(function (parsedAuthorsResponse) {
-            thisSongsList.songs = parsedSongsResponse;
-            for (let song of thisSongsList.songs) {
-              song.author =
-                (parsedAuthorsResponse[song.author - 1].name + ' ' +
-                parsedAuthorsResponse[song.author - 1].lastname).toUpperCase();
-            }
+            thisAllPages.songs = parsedSongsResponse;
 
-            console.log('thisSongsList.songs', thisSongsList.songs);
-            const songsListGenHTML = templates.songsList(
-              {
-                songs: thisSongsList.songs,
-              }
-            );
-            thisSongsList.dom.wrapper.innerHTML = songsListGenHTML;
+            songAdvice.prepareSongTile(parsedSongsResponse, parsedAuthorsResponse);
+
+            homePage.generateAndPutHTML(thisAllPages);
+            console.log('thisSongsList.songs', thisAllPages.songs);
+
             SongsPlayer.initSongsPlayer();
           })
           .catch((error) => {
@@ -58,4 +57,4 @@ class SongsList {
   }
 }
 
-export default SongsList;
+export default AllPages;
