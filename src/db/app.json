@@ -3,17 +3,17 @@
         {
             "id": 1,
             "name": "Piotr",
-            "lastnname": "Lecicki"
+            "lastname": "Lecicki"
         },
         {
             "id": 2,
             "name": "Anna",
-            "lastnname": "Kowalska"
+            "lastname": "Kowalska"
         },
         {
             "id": 3,
             "name": "Jan",
-            "lastnname": "Nowak"
+            "lastname": "Nowak"
         }
     ],
     "songs": [

@@ -13,24 +13,44 @@ class SongsList {
   render() {
     const thisSongsList = this;
 
-    const url = settings.db.url + '/' + settings.db.songs;
+    const urlSongs = settings.db.url + '/' + settings.db.songs;
+    const urlAuthors = settings.db.url + '/' + settings.db.authors;
 
-    fetch(url)
+    fetch(urlSongs)
       .then(function (rawResponse) {
         if (rawResponse.ok) {
           return rawResponse.json();
         }
-        throw new Error('API didnt respond');
+        throw new Error('API with songs didnt respond');
       })
-      .then(function (parsedResponse) {
-        thisSongsList.songs = parsedResponse;
-        const songsListGenHTML = templates.songsList(
-          {
-            songs: thisSongsList.songs,
-          }
-        );
-        thisSongsList.dom.wrapper.innerHTML = songsListGenHTML;
-        SongsPlayer.initSongsPlayer();
+      .then(function (parsedSongsResponse) {
+        fetch(urlAuthors)
+          .then(function (rawResponse) {
+            if (rawResponse.ok) {
+              return rawResponse.json();
+            }
+            throw new Error('API with authors didnt respond');
+          })
+          .then(function (parsedAuthorsResponse) {
+            thisSongsList.songs = parsedSongsResponse;
+            for (let song of thisSongsList.songs) {
+              song.author =
+                (parsedAuthorsResponse[song.author - 1].name + ' ' +
+                parsedAuthorsResponse[song.author - 1].lastname).toUpperCase();
+            }
+
+            console.log('thisSongsList.songs', thisSongsList.songs);
+            const songsListGenHTML = templates.songsList(
+              {
+                songs: thisSongsList.songs,
+              }
+            );
+            thisSongsList.dom.wrapper.innerHTML = songsListGenHTML;
+            SongsPlayer.initSongsPlayer();
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       })
       .catch((error) => {
         console.log(error);

@@ -83,19 +83,19 @@
     <script id="template-songs-list" type="text/x-handlebars-template">
         {{#each songs}}
         <div class="song pb-4">
-            <div class="song-title px-3 pb-4">JOHN DOE - Where did my love go?</div>
+            <div class="song-title px-3 pb-4">{{ author }} - {{ title }}</div>
             <div class="player mb-3">
                 <audio>
                     <!-- [html-validate-disable-next element-permitted-content] -->
-                    <source src="songs/At_The_Top_David_Renda.mp3" type="audio/mpeg">
+                    <source src="songs/{{filename}}" type="audio/mpeg">
                 </audio>
             </div>
             <div class="row song-description px-2">
                 <div class="col-md-8">
-                    Categories: slow, melancholy
+                    Categories: {{ categories.[0] }}, {{ categories.[1] }}
                 </div>
                 <div class="col-md-4">
-                    4 in the ranking
+                    #{{ ranking }} in the ranking
                 </div>
             </div>
         </div>
