@@ -1,4 +1,21 @@
 {
+    "authors": [
+        {
+            "id": 1,
+            "name": "Piotr",
+            "lastnname": "Lecicki"
+        },
+        {
+            "id": 2,
+            "name": "Anna",
+            "lastnname": "Kowalska"
+        },
+        {
+            "id": 3,
+            "name": "Jan",
+            "lastnname": "Nowak"
+        }
+    ],
     "songs": [
         {
             "id": 1,
