@@ -1,0 +1,41 @@
+.search {
+  .search-title {
+    font-size: 30px;
+    font-weight: $font-semibold;
+    text-align: center;
+    color: $color-gray;
+    letter-spacing: 4px;
+  }
+
+  .search-subtitle {
+    font-size: 18px;
+    font-weight: $font-semibold;
+    text-align: center;
+    color: $color-gray;
+    letter-spacing: 3px;
+    input {
+      width: 150px;
+      height: 28px;
+      border-radius: 7px;
+      border: 0;
+    }
+    button {
+      height: 28px;
+      border-radius: 7px;
+      border: 0;
+      background: $color-main;
+      font-weight: $font-semibold;
+      color: $color-white;
+      font-size: 13px;
+    }
+  }
+
+  .search-content {
+    .search-content-header {
+      font-size: 16px;
+      font-weight: $font-semibold;
+      text-align: center;
+      letter-spacing: 3px;
+    }
+  }
+}
