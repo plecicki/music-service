@@ -76,16 +76,11 @@
                         <input type="text" class="search-song-input">
                     </span>
                     <span class="px-1">
-                        <button type="button">SEARCH</button>
+                        <button type="button" class="search-song-button">SEARCH</button>
                     </span>
                 </div>
-                <div class="search-content">
-                    <div class="search-content-header py-4">
-                        We have found 3 songs..
-                    </div>
-                    <div class="searched-songs">
+                <div class="search-songs">
 
-                    </div>
                 </div>
             </div>
         </section>
@@ -147,6 +142,37 @@
                 </div>
             </div>
         </div>
+    </script>
+
+    <script id="template-search-songs" type="text/x-handlebars-template">
+        {{#if songs.length > 0 }}
+            <div class="search-songs-header py-4">
+                We have found {{ songs.length }} songs..
+            </div>
+            {{#each songs}}
+                <div class="song pb-4">
+                    <div class="song-title px-3 pb-4">{{ author }} - {{ title }}</div>
+                    <div class="player mb-3">
+                        <audio>
+                            <!-- [html-validate-disable-next element-permitted-content] -->
+                            <source src="songs/{{filename}}" type="audio/mpeg">
+                        </audio>
+                    </div>
+                    <div class="row song-description px-2">
+                        <div class="col-md-8">
+                            Categories: {{ categories.[0] }}, {{ categories.[1] }}
+                        </div>
+                        <div class="col-md-4">
+                            #{{ ranking }} in the ranking
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        {{else}}
+            <div class="search-content-header py-4">
+                No song was found! Try again!
+            </div>
+        {{/if}}
     </script>
 
     <script src="https://cdn.jsdelivr.net/gh/greghub/green-audio-player/dist/js/green-audio-player.min.js"></script>

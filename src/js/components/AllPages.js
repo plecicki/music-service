@@ -3,14 +3,17 @@ import SongsPlayer from '../config/SongsPlayer.js';
 import SongAdvice from './SongAdvice.js';
 import HomePage from './HomePage.js';
 import DiscoverPage from './DiscoverPage.js';
+import SearchPage from './SearchPage.js';
 
 class AllPages {
 
-  constructor(songsListContainer, randomSongContainer) {
+  constructor(songsListContainer, randomSongContainer, searchContainer, searchSongsContainer) {
     const thisAllPages = this;
     thisAllPages.dom = [];
     thisAllPages.dom.songsList = songsListContainer;
     thisAllPages.dom.randomSong = randomSongContainer;
+    thisAllPages.dom.search = searchContainer;
+    thisAllPages.dom.searchSongs = searchSongsContainer;
     thisAllPages.renderPages();
   }
 
@@ -23,6 +26,7 @@ class AllPages {
     const songAdvice = new SongAdvice();
 
     const homePage = new HomePage();
+    const searchPage = new SearchPage();
     const discoverPage = new DiscoverPage();
 
     fetch(urlSongs)
@@ -41,10 +45,14 @@ class AllPages {
             throw new Error('API with authors didnt respond');
           })
           .then(function (parsedAuthorsResponse) {
-            /* HOME PAGE */
             thisAllPages.songs = parsedSongsResponse;
             songAdvice.prepareSongTiles(parsedSongsResponse, parsedAuthorsResponse);
+
+            /* HOME PAGE */
             homePage.generateAndPutHTML(thisAllPages);
+
+            /* SEARCH PAGE */
+            thisAllPages.searchedSongs = searchPage.addListenerToSearchSongsAndGenHTML(thisAllPages, songAdvice);
 
             /* DISCOVER PAGE */
             thisAllPages.randomSong = songAdvice.chooseRandomSong(parsedSongsResponse);

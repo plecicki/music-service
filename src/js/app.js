@@ -8,8 +8,10 @@ const app = {
 
     thisApp.songsListContainer = document.querySelector(select.containerOf.songsList);
     thisApp.randomSongContainer = document.querySelector(select.containerOf.randomSong);
+    thisApp.searchContainer = document.querySelector(select.containerOf.search);
+    thisApp.searchSongsContainer = document.querySelector(select.containerOf.searchSongs);
 
-    new AllPages(thisApp.songsListContainer, thisApp.randomSongContainer);
+    new AllPages(thisApp.songsListContainer, thisApp.randomSongContainer, thisApp.searchContainer, thisApp.searchSongsContainer);
   },
   initPages: function () {
     const thisApp = this;
