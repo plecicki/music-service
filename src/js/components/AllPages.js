@@ -57,7 +57,6 @@ class AllPages {
             /* DISCOVER PAGE */
             thisAllPages.randomSong = songAdvice.chooseRandomSong(parsedSongsResponse);
             discoverPage.generateAndPutHTML(thisAllPages);
-            console.log('thisSongsList.songs', thisAllPages.songs);
 
             SongsPlayer.initSongsPlayer();
           })

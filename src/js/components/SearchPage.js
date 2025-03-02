@@ -10,15 +10,14 @@ class SearchPage {
     allPagesObject.dom.searchButton.addEventListener('click', function () {
       if (allPagesObject.dom.searchInput.value != null && allPagesObject.dom.searchInput.value !== '') {
         const searchedSongs = songAdvice.searchSongs(allPagesObject.songs, allPagesObject.dom.searchInput.value);
-        console.log('searchedSongs', searchedSongs);
         thisSearchPage.generateAndPutHTML(allPagesObject, searchedSongs);
-        SongsPlayer.initSongsPlayer();
+        SongsPlayer.initSongsPlayerSearch();
       }
     });
   }
 
   generateAndPutHTML(allPagesObject, searchedSongs) {
-    const searchSongsGenHTML = templates.songsList(
+    const searchSongsGenHTML = templates.searchSongs(
       {
         songs: searchedSongs,
       }

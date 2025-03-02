@@ -145,14 +145,14 @@
     </script>
 
     <script id="template-search-songs" type="text/x-handlebars-template">
-        {{#if songs.length > 0 }}
+        {{#if songs.length includeZero=false }}
             <div class="search-songs-header py-4">
                 We have found {{ songs.length }} songs..
             </div>
             {{#each songs}}
                 <div class="song pb-4">
                     <div class="song-title px-3 pb-4">{{ author }} - {{ title }}</div>
-                    <div class="player mb-3">
+                    <div class="search-player mb-3">
                         <audio>
                             <!-- [html-validate-disable-next element-permitted-content] -->
                             <source src="songs/{{filename}}" type="audio/mpeg">
@@ -169,7 +169,7 @@
                 </div>
             {{/each}}
         {{else}}
-            <div class="search-content-header py-4">
+            <div class="search-songs-header py-4">
                 No song was found! Try again!
             </div>
         {{/if}}
