@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Music Service</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/greghub/green-audio-player/dist/css/green-audio-player.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="title position-relative">
+            <img src="images/background.jpg" alt="Background">
+            <div class="title-text position-absolute">
+                <div class="main-title">
+                    TASTE
+                </div>
+                <div class="subtitle">
+                    ENGAGE<br>IN<br>ART
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="main-nav pt-4 d-flex justify-content-around">
+                <a href="#home">HOME</a>
+                <a href="#search">SEARCH</a>
+                <a href="#discover">DISCOVER</a>
+            </div>
+        </div>
+    </header>
+    <div id="pages">
+        <section id="home" class="pt-1">
+            <div class="home container songs-list pt-4">
+
+            </div>
+            <div class="footer-title position-relative">
+                <div class="artist-photo position-relative">
+                    <div class="footer-title-text position-absolute">
+                        <span class="part-1">
+                            SUBSCRIBE
+                        </span>
+                        <span class="part-2">
+                            NOW
+                        </span>
+                    </div>
+                    <button class="position-absolute" type="button">JOIN NOW</button>
+                    <img src="images/artist.jpg" alt="Artist Image" class="artist-img position-absolute">
+                    <div class="artist-name position-absolute">
+                        <div class="name">
+                            Dean
+                        </div>
+                        <div class="lastname">
+                            <span class="part-1">Hen</span>
+                            <span class="part-2">son</span>
+                        </div>
+                    </div>
+                    <div class="subtitle position-absolute">
+                        <div class="part-1">NEW ALBUM</div>
+                        <div class="part-2">Available only for subscribers</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="search" class="pt-1">
+            <div class="search container">
+                <div class="search-title pt-4">
+                    SEARCH
+                </div>
+                <div class="search-subtitle pt-4 pb-2">
+                    <span>Name</span>
+                    <span class="px-1">
+                        <input type="text" class="search-song-input">
+                    </span>
+                    <span class="px-1">
+                        <button type="button" class="search-song-button">SEARCH</button>
+                    </span>
+                </div>
+                <div class="search-songs">
+                    <div class="search-songs-header py-4">
+                        Put value and click "SEARCH" button!
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="discover" class="pt-1">
+            <div class="discover container">
+                <div class="discover-title pt-4">
+                    DISCOVER
+                </div>
+                <div class="discover-subtitle pt-4 pb-2">
+                    Give it a try!
+                </div>
+                <div class="random-song pt-4">
+
+                </div>
+            </div>
+        </section>
+    </div>
+    <footer class="py-3">
+        All rights reserved
+    </footer>
+
+    <script id="template-songs-list" type="text/x-handlebars-template">
+        {{#each songs}}
+        <div class="song pb-4">
+            <div class="song-title px-3 pb-4">{{ author }} - {{ title }}</div>
+            <div class="player mb-3">
+                <audio>
+                    <!-- [html-validate-disable-next element-permitted-content] -->
+                    <source src="songs/{{filename}}" type="audio/mpeg">
+                </audio>
+            </div>
+            <div class="row song-description px-2">
+                <div class="col-md-8">
+                    Categories: {{ categories.[0] }}, {{ categories.[1] }}
+                </div>
+                <div class="col-md-4">
+                    #{{ ranking }} in the ranking
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </script>
+
+    <script id="template-song" type="text/x-handlebars-template">
+        <div class="song pb-4">
+            <div class="song-title px-3 pb-4">{{ author }} - {{ title }}</div>
+            <div class="player mb-3">
+                <audio>
+                    <!-- [html-validate-disable-next element-permitted-content] -->
+                    <source src="songs/{{filename}}" type="audio/mpeg">
+                </audio>
+            </div>
+            <div class="row song-description px-2">
+                <div class="col-md-8">
+                    Categories: {{ categories.[0] }}, {{ categories.[1] }}
+                </div>
+                <div class="col-md-4">
+                    #{{ ranking }} in the ranking
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="template-search-songs" type="text/x-handlebars-template">
+        {{#if songs.length includeZero=false }}
+            <div class="search-songs-header py-4">
+                We have found {{ songs.length }} songs..
+            </div>
+            {{#each songs}}
+                <div class="song pb-4">
+                    <div class="song-title px-3 pb-4">{{ author }} - {{ title }}</div>
+                    <div class="search-player mb-3">
+                        <audio>
+                            <!-- [html-validate-disable-next element-permitted-content] -->
+                            <source src="songs/{{filename}}" type="audio/mpeg">
+                        </audio>
+                    </div>
+                    <div class="row song-description px-2">
+                        <div class="col-md-8">
+                            Categories: {{ categories.[0] }}, {{ categories.[1] }}
+                        </div>
+                        <div class="col-md-4">
+                            #{{ ranking }} in the ranking
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        {{else}}
+            <div class="search-songs-header py-4">
+                No song was found! Try again!
+            </div>
+        {{/if}}
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/gh/greghub/green-audio-player/dist/js/green-audio-player.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
+    <script src="js/app.js" type="module"></script>
+</body>
+</html>
