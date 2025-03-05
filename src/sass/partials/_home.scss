@@ -1,7 +1,10 @@
 .footer-title {
-  > .subscribe-img {
-    width: 100%;
-    margin-top: 6vw;
+  .artist-photo {
+    background-image: url("../images/subscribe.jpg");
+    height: calc(100vw/16*9);
+    background-size: cover;
+    background-position-y: 6vw;
+    background-repeat: no-repeat;
   }
 
   .footer-title-text {
@@ -31,13 +34,13 @@
     border: 0;
   }
 
-  > .artist-img {
+  .artist-img {
     width: 22vw;
     top: 16vw;
     right: 20vw;
   }
 
-  > .artist-name {
+  .artist-name {
     top: 28vw;
     left: 41vw;
     font-size: 5vw;
@@ -55,7 +58,7 @@
     }
   }
 
-  > .subtitle {
+  .subtitle {
     right: 18vw;
     top: 45vw;
     text-align: end;
